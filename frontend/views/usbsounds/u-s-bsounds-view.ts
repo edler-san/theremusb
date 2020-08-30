@@ -46,6 +46,13 @@ export class USBsoundsView extends LitElement {
     this.addEventListener('mousemove', this.updateOscillator);
   }
 
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    //disconnect on tab change
+    this.osci.disconnect();
+  }
+
+
   firstUpdated(){
     showNotification('Welcome to TheremUSB! Start by connecting one or more USB device(s). ' +
     'A sound generator is created from the IDs of all connected devices. Add/remove devices to alter the tone.'+
